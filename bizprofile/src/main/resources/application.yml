@@ -1,0 +1,25 @@
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
+      - org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration
+      - org.springframework.cloud.aws.autoconfigure.context.ContextRegionProviderAutoConfiguration
+
+cloud:
+  aws:
+    region:
+      static: us-east-2
+      auto: false
+    stack:
+      auto: false
+    credentials:
+      access-key: <ACCESS_KEY>
+      secret-key: <SECRET_KEY>
+    sns:
+      snsRegion: us-east-2
+      snsTopicArn: <SNS_TOPIC_ARN>
+    sqs:
+      sqsRegion: us-east-2
+      sqsTopicArn: <SQS_TOPIC_ARN>
+      uri: <SQS_URI>
+
