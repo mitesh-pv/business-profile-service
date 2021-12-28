@@ -9,11 +9,9 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AWSSNSConfigProperties {
+public class AWSDynamoDBConfigProperties {
     @NotNull
-    private String snsRegion;
+    private String region;
     @NotNull
-    private String reqSnsTopicArn;
-    @NotNull
-    private String resSnsTopicArn;
+    private String serviceEndpoint;
 }

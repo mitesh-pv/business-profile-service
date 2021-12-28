@@ -1,4 +1,4 @@
-package com.miteshpv.bizprofileservice.bizprofile.config.properties;
+package com.miteshpv.consumer.qbaccounting.qbaccounting.config.properties;
 
 
 import lombok.AllArgsConstructor;
@@ -15,5 +15,4 @@ import org.springframework.context.annotation.Configuration;
 public class AWSConfigProperties {
     private AWSSNSConfigProperties sns;
     private AWSSQSConfigProperties sqs;
-    private AWSDynamoDBConfigProperties dynamodb;
 }

@@ -1,4 +1,4 @@
-package com.miteshpv.bizprofileservice.bizprofile.config.properties;
+package com.miteshpv.consumer.qbpayroll.qbpayroll.config.properties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,11 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AWSSNSConfigProperties {
+public class AWSSQSConfigProperties {
     @NotNull
-    private String snsRegion;
+    private String sqsRegion;
     @NotNull
-    private String reqSnsTopicArn;
+    private String sqsTopicArn;
     @NotNull
-    private String resSnsTopicArn;
+    private String uri;
 }

@@ -1,4 +1,4 @@
-server.port: 8080
+server.port: 8082
 
 spring:
   autoconfigure:
@@ -23,10 +23,9 @@ cloud:
       reqSnsTopicArn: arn:aws:sns:us-east-2:461872990312:biz-profile-req
     sqs:
       sqsRegion: us-east-2
-      sqsTopicArn: arn:aws:sqs:us-east-2:461872990312:biz-profile-sqs
-      uri: https://sqs.us-east-2.amazonaws.com/461872990312/biz-profile-sqs
-    dynamodb:
-      region: us-east-2
-      serviceEndpoint: dynamodb.us-east-2.amazonaws.com
+      sqsTopicArn: arn:aws:sqs:us-east-2:461872990312:qb-payroll-sqs
+      uri: https://sqs.us-east-2.amazonaws.com/461872990312/qb-payroll-sqs
 
-
+product:
+  name: Quibooks Payroll
+  code: QB-PRL
