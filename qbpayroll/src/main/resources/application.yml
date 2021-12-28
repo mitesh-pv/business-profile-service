@@ -15,16 +15,16 @@ cloud:
     stack:
       auto: false
     credentials:
-      access-key: AKIAWXCOGRBULKGXYMCS
-      secret-key: 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
+      access-key:
+      secret-key:
     sns:
       snsRegion: us-east-2
-      resSnsTopicArn: arn:aws:sns:us-east-2:461872990312:biz-profile-res
-      reqSnsTopicArn: arn:aws:sns:us-east-2:461872990312:biz-profile-req
+      resSnsTopicArn:
+      reqSnsTopicArn:
     sqs:
       sqsRegion: us-east-2
-      sqsTopicArn: arn:aws:sqs:us-east-2:461872990312:qb-payroll-sqs
-      uri: https://sqs.us-east-2.amazonaws.com/461872990312/qb-payroll-sqs
+      sqsTopicArn:
+      uri:
 
 product:
   name: Quibooks Payroll
