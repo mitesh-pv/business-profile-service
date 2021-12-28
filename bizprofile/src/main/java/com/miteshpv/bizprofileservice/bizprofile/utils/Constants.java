@@ -5,4 +5,9 @@ public interface Constants {
     String PRODUCT_ENTITLEMENT_ROOT = "/api/product-entitlement";
 
     String PROTOCOL_SQS = "sqs";
+
+    String NA = "no-res";
+
+    String EMPTY_STRING = "";
+    String UUID_DELIMITER = "-";
 }
