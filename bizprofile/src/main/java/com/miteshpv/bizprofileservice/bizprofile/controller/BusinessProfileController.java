@@ -37,7 +37,7 @@ public class BusinessProfileController {
     @PutMapping("/v1/update-profile/{taxId}")
     public ResponseEntity<?> updateBusinessProfile(@PathVariable final String taxId, @RequestBody final BusinessProfileRequest businessProfileRequest) {
         try {
-            businessProfileService.updateBusinessProfile(taxId, businessProfileRequest);
+            businessProfileService.sendBusinessProfileUpdateRequest(taxId, businessProfileRequest);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (Exception exp) {
             log.error("Exception updating object");
