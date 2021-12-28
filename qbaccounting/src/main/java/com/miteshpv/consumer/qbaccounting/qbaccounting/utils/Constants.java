@@ -1,8 +1,7 @@
-package com.miteshpv.bizprofileservice.bizprofile.utils;
+package com.miteshpv.consumer.qbaccounting.qbaccounting.utils;
 
 public interface Constants {
     String BUSINESS_PROFILE_ROOT = "/api/business-profile";
-    String PRODUCT_ENTITLEMENT_ROOT = "/api/product-entitlement";
 
     String PROTOCOL_SQS = "sqs";
 }

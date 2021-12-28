@@ -8,24 +8,30 @@
 		<version>2.6.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.miteshpv.bizprofileservice</groupId>
-	<artifactId>bizprofile</artifactId>
+	<groupId>com.miteshpv.consumer.qbpayroll</groupId>
+	<artifactId>qbpayroll</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bizprofile</name>
-	<description>Business profile management service</description>
+	<name>qbpayroll</name>
+	<description>Consumer of business profile service</description>
 	<properties>
 		<java.version>11</java.version>
 		<aws-sdk.version>1.12.131</aws-sdk.version>
-		<spring-aws-messaging.version>2.2.6.RELEASE</spring-aws-messaging.version>
+		<jakarta-validation.version>2.0.2</jakarta-validation.version>
+		<spring-cloud-aws-messaging.version>2.2.6.RELEASE</spring-cloud-aws-messaging.version>
+		<spring-cloud-starter-aws.version>2.2.1.RELEASE</spring-cloud-starter-aws.version>
+		<aws-java-sdk-dynamodb.version>1.12.130</aws-java-sdk-dynamodb.version>
 	</properties>
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -36,6 +42,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-aws</artifactId>
+			<version>${spring-cloud-starter-aws.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-aws-messaging</artifactId>
+			<version>${spring-cloud-aws-messaging.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.amazonaws</groupId>
@@ -53,33 +69,14 @@
 			<version>${aws-sdk.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-aws-messaging</artifactId>
-			<version>2.2.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-aws</artifactId>
-			<version>2.2.1.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-dynamodb</artifactId>
-			<version>1.12.130</version>
+			<version>${aws-java-sdk-dynamodb.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
-			<version>2.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.derjust</groupId>
-			<artifactId>spring-data-dynamodb</artifactId>
-			<version>5.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>${jakarta-validation.version}</version>
 		</dependency>
 	</dependencies>
 

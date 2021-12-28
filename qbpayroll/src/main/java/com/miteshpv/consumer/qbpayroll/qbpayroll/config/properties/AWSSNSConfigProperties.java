@@ -1,4 +1,4 @@
-package com.miteshpv.bizprofileservice.bizprofile.config.properties;
+package com.miteshpv.consumer.qbpayroll.qbpayroll.config.properties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

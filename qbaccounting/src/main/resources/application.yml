@@ -1,10 +1,11 @@
+server.port: 8081
+
 spring:
   autoconfigure:
     exclude:
       - org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
       - org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration
       - org.springframework.cloud.aws.autoconfigure.context.ContextRegionProviderAutoConfiguration
-
 
 cloud:
   aws:
@@ -24,6 +25,7 @@ cloud:
       sqsRegion: us-east-2
       sqsTopicArn:
       uri:
-    dynamodb:
-      region: us-east-2
-      serviceEndpoint:
+
+product:
+  name: Quibooks Accounting
+  code: QB-ACC

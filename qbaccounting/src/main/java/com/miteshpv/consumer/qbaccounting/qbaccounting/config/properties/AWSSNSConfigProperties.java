@@ -1,4 +1,4 @@
-package com.miteshpv.bizprofileservice.bizprofile.config.properties;
+package com.miteshpv.consumer.qbaccounting.qbaccounting.config.properties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
