@@ -32,24 +32,24 @@ Following shows the API Design for the requirement
 1. Create Profile<br>
 
 
-```/api/business-profile/v1/create-profile```
+```POST: /api/business-profile/v1/create-profile```
 
 2. Update Profile<br>
 
 
-```/api/business-profile/v1/update-profile/{taxId}```
+```PUT: /api/business-profile/v1/update-profile/{taxId}```
 
 **Managing Product Entitlement**
 
 1. Create Entitlement<br>
 
 
-```/api/product-entitlement/v1/create-entitlement```
+```POST: /api/product-entitlement/v1/create-entitlement```
 
 2. Get Entitled Products<br>
 
 
-```/v1/create-entitlement/v1/get-entitled-products/{personTaxId}```
+```GET: /v1/create-entitlement/v1/get-entitled-products/{personTaxId}```
 
 
 
