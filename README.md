@@ -32,24 +32,32 @@ Following shows the API Design for the requirement
 1. Create Profile<br>
 
 
-```POST: /api/business-profile/v1/create-profile```
+```groovy
+POST: /api/business-profile/v1/create-profile
+```
 
 2. Update Profile<br>
 
 
-```PUT: /api/business-profile/v1/update-profile/{taxId}```
+```groovy
+PUT: /api/business-profile/v1/update-profile/{taxId}
+```
 
 **Managing Product Entitlement**
 
 1. Create Entitlement<br>
 
 
-```POST: /api/product-entitlement/v1/create-entitlement```
+```groovy
+POST: /api/product-entitlement/v1/create-entitlement
+```
 
 2. Get Entitled Products<br>
 
 
-```GET: /v1/create-entitlement/v1/get-entitled-products/{personTaxId}```
+```groovy
+GET: /v1/create-entitlement/v1/get-entitled-products/{personTaxId}
+```
 
 
 
