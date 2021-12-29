@@ -9,11 +9,9 @@ import com.miteshpv.bizprofileservice.bizprofile.repository.AWSDynamoDBDao;
 import com.miteshpv.bizprofileservice.bizprofile.utils.Constants;
 import com.miteshpv.bizprofileservice.bizprofile.utils.Utility;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +41,7 @@ public class BusinessProfileServiceImpl implements IBusinessProfileService{
         try {
             Utility.copyObject(entity, businessProfileRequest);
             businessProfileDao.saveOrUpdate(entity);
+
         }catch (IllegalAccessException | NoSuchFieldException exp) {
             log.error("Error copying source bean values to destination");
             throw new IllegalAccessException("Bean Copy Exception");
