@@ -35,6 +35,28 @@ Following shows the API Design for the requirement
 ```groovy
 POST: /api/business-profile/v1/create-profile
 ```
+<details>
+  <summary>Request Payload</summary>
+  
+  ```json
+{
+    "legalName" : "string",
+    "companyName" : "string",
+    "email": "string",
+    "taxId" : "string",
+    "website": "string",
+    "legalAddress" : "string",
+    "businessAddress" : {
+        "line1" : "string",
+        "line2" : "string",
+        "city" : "string",
+        "state" : "string",
+        "zip" : "string",
+        "country" : "string"
+    }
+}
+  ```
+</details>
 
 2. Update Profile<br>
 
@@ -42,6 +64,28 @@ POST: /api/business-profile/v1/create-profile
 ```groovy
 PUT: /api/business-profile/v1/update-profile/{taxId}
 ```
+<details>
+  <summary>Request Payload</summary>
+  
+  ```json
+{
+    "legalName" : "string",
+    "companyName" : "string",
+    "email": "string",
+    "taxId" : "string",
+    "website": "string",
+    "legalAddress" : "string",
+    "businessAddress" : {
+        "line1" : "string",
+        "line2" : "string",
+        "city" : "string",
+        "state" : "string",
+        "zip" : "string",
+        "country" : "string"
+    }
+}
+  ```
+</details>
 
 **Managing Product Entitlement**
 
@@ -51,6 +95,16 @@ PUT: /api/business-profile/v1/update-profile/{taxId}
 ```groovy
 POST: /api/product-entitlement/v1/create-entitlement
 ```
+<details>
+  <summary>Request Payload</summary>
+  
+  ```json
+{
+    "entitledProdCode": "string",
+    "personTaxId": "string"
+}
+  ```
+</details>
 
 2. Get Entitled Products<br>
 
