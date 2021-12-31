@@ -123,7 +123,8 @@ The Below design leverages the fan-out option provided by AWS SQS-SNS architectu
 * Based on the number of approvals received from the bnusiness-profile-res sns topic, business-profile service makes decision to persist the update request to dynamodb.
 
 
-![BusinessProfile-HLD-2](https://user-images.githubusercontent.com/28482024/147813620-6a9ea864-e3ae-491e-9e57-3d0b69bfe409.jpg)
+
+![BusinessProfile-HLD-3](https://user-images.githubusercontent.com/28482024/147814365-cdaf0bea-5d67-4384-b2b5-10674d44c978.jpg)
 
 
 
