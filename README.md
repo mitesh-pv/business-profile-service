@@ -113,7 +113,17 @@ POST: /api/product-entitlement/v1/create-entitlement
 GET: /v1/create-entitlement/v1/get-entitled-products/{personTaxId}
 ```
 
+### High Level Design
 
+The Below design leverages the fan-out option provided by AWS SQS-SNS architecture for asynchronous parallel message processing. The same has been mentioned in following steps.
+* The BusinessProfile Service is the main application server that handles the create and update request.
+* The update request is first received by business-profile service via http request.
+* Business profile server then publishes request(to the bnusiness-profile-req sns topic) which is received by the products subscribed by the user w.r.t. which the update request was received (using their respective sqs queues)
+* Each of the products can approve/reject the request (by publishing their respone to bnusiness-profile-res topic) which is received by the the business-profile service.
+* Based on the number of approvals received from the bnusiness-profile-res sns topic, business-profile service makes decision to persist the update request to dynamodb.
+
+
+![BusinessProfile-HLD-2](https://user-images.githubusercontent.com/28482024/147813620-6a9ea864-e3ae-491e-9e57-3d0b69bfe409.jpg)
 
 
 
