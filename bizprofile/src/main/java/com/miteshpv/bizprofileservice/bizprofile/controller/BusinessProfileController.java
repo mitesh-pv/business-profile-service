@@ -41,6 +41,7 @@ public class BusinessProfileController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (Exception exp) {
             log.error("Exception updating object");
+
         }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }

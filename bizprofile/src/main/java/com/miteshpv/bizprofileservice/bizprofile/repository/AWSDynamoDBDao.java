@@ -28,7 +28,7 @@ public class AWSDynamoDBDao <T> {
         Optional<Field> idField = Arrays.stream(entity.getClass().getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(DynamoDBHashKey.class)).findFirst();
         if(!idField.isPresent()) {
-            throw new AmazonDynamoDBException("No Partition Key annotation found in {}" + entity.getClass().getName());
+            throw new AmazonDynamoDBException("No Partition Key annotation found in " + entity.getClass().getName());
         }
         String idFieldName = idField.get().getName();
         DynamoDBSaveExpression saveExpression = new DynamoDBSaveExpression();
