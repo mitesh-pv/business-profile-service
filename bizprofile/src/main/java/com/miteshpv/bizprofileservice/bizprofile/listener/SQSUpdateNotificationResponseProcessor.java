@@ -41,6 +41,7 @@ public class SQSUpdateNotificationResponseProcessor {
         if (!responseMap.containsKey(reqId)) {
             responseMap.put(reqId, entity);
         } else {
+
             Map<String, String> resMap = responseMap.get(reqId).getProductRes();
             int prodCount = resMap.size();
             int approvedCount = 0;
@@ -55,7 +56,6 @@ public class SQSUpdateNotificationResponseProcessor {
                 if (!m.getValue().equals("no-res")) {
                     resRecvdCnt++;
                 }
-
                 if (m.getValue().equals("approve")) {
                     approvedCount++;
                 }

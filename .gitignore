@@ -47,3 +47,4 @@ target/
 */.mvn/wrapper/MavenWrapperDownloader.java
 
 */src/main/resources/application.yml
+*/src/test/resources/application-test.yml
