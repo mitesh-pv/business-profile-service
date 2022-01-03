@@ -125,6 +125,20 @@ The Below design leverages the fan-out option provided by AWS SQS-SNS architectu
 
 ![BusinessProfile-HLD-4](https://user-images.githubusercontent.com/28482024/147825827-a9646f38-5d07-44cc-af8e-cf4ca0ccdb43.jpg)
 
+### Assumptions Considered
+
+#### Assumption 1
+The project deployment is done on localhost envionment.
+
+#### Assumption 2
+This project made use of **AWS services** to leverage the **publisher-subscriber** architecture and **DynamoDB** to persist the data.
+
+#### Assumption 3
+The problem statement gives isslustration of 4 products subscribing business profile service, for demonstration I've implemented only 2 products(for validation of request)
+
+#### Assumption 4
+Once the response of profile udpate is received from the subscribed products, those response should be persisted on a DB so that if if some product responds after few days then the request still persists, but for demonstration i've used the java object to temporarily store the response from all the products. 
+
 
 ### Output
 
