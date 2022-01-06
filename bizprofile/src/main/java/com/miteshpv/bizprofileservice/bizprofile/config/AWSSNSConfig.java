@@ -21,7 +21,7 @@ public class AWSSNSConfig {
     @Primary
     public AmazonSNSClient getSnsClient() {
         return (AmazonSNSClient) AmazonSNSClientBuilder.standard()
-                .withRegion(Regions.US_EAST_2)
+                .withRegion(Regions.AP_SOUTH_1)
                 .withCredentials(new AWSStaticCredentialsProvider(
                         new BasicAWSCredentials(environment.getProperty("ACCESS_KEY"), environment.getProperty("SECRET_KEY"))))
                 .build();

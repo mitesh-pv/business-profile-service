@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miteshpv.bizprofileservice.bizprofile.entity.BusinessProfileRequest;
 import com.miteshpv.bizprofileservice.bizprofile.entity.BusinessProfileUpdateNotificationEntity;
 import com.miteshpv.bizprofileservice.bizprofile.entity.PersonEntitlementResponse;
+import com.miteshpv.bizprofileservice.bizprofile.exception.ResourceNotFoundException;
 import com.miteshpv.bizprofileservice.bizprofile.model.BusinessProfileEntity;
 import com.miteshpv.bizprofileservice.bizprofile.repository.AWSDynamoDBDao;
 import com.miteshpv.bizprofileservice.bizprofile.utils.Constants;
@@ -53,8 +54,8 @@ public class BusinessProfileServiceImpl implements IBusinessProfileService{
     public void sendBusinessProfileUpdateRequest(final String taxId, final BusinessProfileRequest businessProfileRequest) throws Exception {
         BusinessProfileEntity entity = (BusinessProfileEntity) businessProfileDao.findById(taxId, BusinessProfileEntity.class);
         if(null == entity) {
-            log.error("Profile with taxId : {} not found", taxId);
-            throw new Exception(String.format("Profile with taxId : {} not found", taxId));
+            log.error("Resource Not found; TaxId : {}", taxId);
+            throw new ResourceNotFoundException("404", taxId);
         }
 
         try {
@@ -77,9 +78,21 @@ public class BusinessProfileServiceImpl implements IBusinessProfileService{
     }
 
     @Override
+    public BusinessProfileEntity findByTaxId(String taxId) {
+        final BusinessProfileEntity  businessProfileEntity = (BusinessProfileEntity) businessProfileDao.findById(taxId, BusinessProfileEntity.class);
+        if(null == businessProfileEntity) {
+            log.error("Resource Not found; TaxId : {}", taxId);
+            throw new ResourceNotFoundException("404", taxId);
+        }
+        return businessProfileEntity;
+    }
+
+    @Override
     public BusinessProfileEntity findByEmail(final String email) {
         List<BusinessProfileEntity> list = (List<BusinessProfileEntity>) businessProfileDao.findAllByAttribute("email", Arrays.asList(email), BusinessProfileEntity.class);
         return list.get(0);
     }
+
+
 
 }

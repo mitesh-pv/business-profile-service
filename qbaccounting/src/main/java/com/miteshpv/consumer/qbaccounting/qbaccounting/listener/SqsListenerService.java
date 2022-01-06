@@ -29,11 +29,13 @@ public class SqsListenerService {
         ObjectMapper mapper = new ObjectMapper();
         SQSNotificationMessageWrapper messageBody = mapper.readValue(message, SQSNotificationMessageWrapper.class);
         BusinessProfileUpdateNotificationEntity entity = mapper.readValue(messageBody.getMessage(), BusinessProfileUpdateNotificationEntity.class);
-        if(!entity.getProductRes().containsKey(productCode)) {
-            log.error("Product {}, not subscribed for user {}", productCode, entity.getBusinessProfileEntity().getTaxId());
-        }else {
-            entity.getProductRes().put(productCode, "approve");
-            log.info("Message processed : {}", mapper.writeValueAsString(entity));
+        if(entity.getProductRes().containsKey(productCode)) {
+            if (!entity.getProductRes().containsKey(productCode)) {
+                log.error("Product {}, not subscribed for user {}", productCode, entity.getBusinessProfileEntity().getTaxId());
+            } else {
+                entity.getProductRes().put(productCode, "approve");
+                log.info("Message processed : {}", mapper.writeValueAsString(entity));
+            }
         }
     }
 }

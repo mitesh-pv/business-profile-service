@@ -38,38 +38,38 @@ public class SQSUpdateNotificationResponseProcessor {
         log.info("Message received : " + entity);
 
         String reqId = entity.getRequestId();
+
         if (!responseMap.containsKey(reqId)) {
             responseMap.put(reqId, entity);
-        } else {
+        }
 
-            Map<String, String> resMap = responseMap.get(reqId).getProductRes();
-            int prodCount = resMap.size();
-            int approvedCount = 0;
-            int resRecvdCnt = 0;
-            for (Map.Entry<String, String> m : entity.getProductRes().entrySet()) {
-                if (responseMap.get(reqId).getProductRes().get(m.getKey()).equals("no-res")) {
-                    resMap.put(m.getKey(), m.getValue());
-                }
+        Map<String, String> resMap = responseMap.get(reqId).getProductRes();
+        int prodCount = resMap.size();
+        int approvedCount = 0;
+        int resRecvdCnt = 0;
+        for (Map.Entry<String, String> m : entity.getProductRes().entrySet()) {
+            if (responseMap.get(reqId).getProductRes().get(m.getKey()).equals("no-res")) {
+                resMap.put(m.getKey(), m.getValue());
             }
+        }
 
-            for (Map.Entry<String, String> m : responseMap.get(reqId).getProductRes().entrySet()) {
-                if (!m.getValue().equals("no-res")) {
-                    resRecvdCnt++;
-                }
-                if (m.getValue().equals("approve")) {
-                    approvedCount++;
-                }
+        for (Map.Entry<String, String> m : responseMap.get(reqId).getProductRes().entrySet()) {
+            if (!m.getValue().equals("no-res")) {
+                resRecvdCnt++;
             }
+            if (m.getValue().equals("approve")) {
+                approvedCount++;
+            }
+        }
 
-            if (resRecvdCnt == prodCount) {
-                log.info("Response from all products received");
-                responseMap.remove(reqId);
-                if (approvedCount == prodCount) {
-                    awsDynamoDBDao.saveOrUpdate(entity.getBusinessProfileEntity());
-                    log.info("Update applied in DB");
-                }else {
-                    log.info("Request rejected");
-                }
+        if (resRecvdCnt == prodCount) {
+            log.info("Response from all products received");
+            responseMap.remove(reqId);
+            if (approvedCount == prodCount) {
+                awsDynamoDBDao.saveOrUpdate(entity.getBusinessProfileEntity());
+                log.info("Update applied in DB");
+            } else {
+                log.info("Request rejected");
             }
         }
     }
