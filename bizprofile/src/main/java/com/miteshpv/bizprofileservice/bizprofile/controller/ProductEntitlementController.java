@@ -21,7 +21,7 @@ public class ProductEntitlementController {
 
     @Autowired
     private IProductEntitlementService entitlementService;
-
+    // /api/product-entitlement
     @PostMapping("/v1/create-entitlement")
     public ResponseEntity<?> createEntitlement(@RequestBody ProductEntitlementEntity entitlementEntity) {
         ProductEntitlementEntity productEntitlementEntity = entitlementService.saveEntitlement(entitlementEntity);

@@ -3,6 +3,7 @@ package com.miteshpv.bizprofileservice.bizprofile.controller;
 import com.miteshpv.bizprofileservice.bizprofile.entity.ApiResponse;
 import com.miteshpv.bizprofileservice.bizprofile.entity.BusinessProfileRequest;
 import com.miteshpv.bizprofileservice.bizprofile.entity.BusinessProfileResponse;
+import com.miteshpv.bizprofileservice.bizprofile.exception.ResourceNotFoundException;
 import com.miteshpv.bizprofileservice.bizprofile.model.BusinessProfileEntity;
 import com.miteshpv.bizprofileservice.bizprofile.service.IBusinessProfileService;
 
@@ -38,18 +39,22 @@ public class BusinessProfileController {
     public ResponseEntity<?> updateBusinessProfile(@PathVariable final String taxId, @RequestBody final BusinessProfileRequest businessProfileRequest) {
         try {
             businessProfileService.sendBusinessProfileUpdateRequest(taxId, businessProfileRequest);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (Exception exp) {
             log.error("Exception updating object");
-
+            throw new ResourceNotFoundException("404", taxId);
         }
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/v1/get-profile-by-email/{email}")
     public ResponseEntity<?> findBusinessProfileByEmail(@PathVariable String email) {
         final BusinessProfileEntity businessProfileEntity = businessProfileService.findByEmail(email);
         return new ResponseEntity<>(convertBusinessProfileEntityToApiResponse(businessProfileEntity), HttpStatus.OK);
+    }
+
+    @GetMapping("/v1/get-profile/{taxId}")
+    public ResponseEntity<?> findBusinessProfile(@PathVariable String taxId) {
+        return new ResponseEntity<>(businessProfileService.findByTaxId(taxId), HttpStatus.OK);
     }
 
     private ApiResponse convertBusinessProfileEntityToApiResponse(final BusinessProfileEntity businessProfileEntity) {

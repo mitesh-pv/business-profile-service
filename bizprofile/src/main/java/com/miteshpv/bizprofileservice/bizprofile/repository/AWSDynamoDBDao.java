@@ -54,5 +54,5 @@ public class AWSDynamoDBDao <T> {
                 .withAttributeValueList(attList));
         return dynamoDBMapper.scan(clazz, dynamoDBScanExpression);
     }
-
+    
 }
